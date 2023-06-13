@@ -1,10 +1,26 @@
 ﻿using Sandbox;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace UEDFC
 {
 	public partial class Player : AnimatedEntity
 	{
+		[Net]
+		public PlayerClasses CurrPlayerClass { get; set; }
+
+		// Shnasty way of doing this, but meh
+		public float AssaultArmor = 150f;
+		public float RangerArmor = 100f;
+		public float FencerArmor = 250f;
+		public float WingDiverArmor = 75f;
+
+		// Same goes for this
+		public List<AssaultWeapon> UnlockedAssaultWeapons;
+		public List<RangerWeapon> UnlockedRangerWeapons;
+		public List<FencerWeapon> UnlockedFencerWeapons;
+		public List<WingDiverWeapon> UnlockedWingDiverWeapons;
+
 		[Net, Predicted]
 		public Weapon ActiveWeapon { get; set; }
 
@@ -66,6 +82,23 @@ namespace UEDFC
 
 		public void Respawn()
 		{
+			// Set the corresponding armor to be the health of the player.
+			switch(CurrPlayerClass)
+			{
+				case PlayerClasses.Assault:
+					Health = AssaultArmor;
+					break;
+				case PlayerClasses.Ranger:
+					Health = RangerArmor;
+					break;
+				case PlayerClasses.Fencer:
+					Health = FencerArmor;
+					break;
+				case PlayerClasses.WingDiver:
+					Health = WingDiverArmor;
+					break;
+			}
+
 			Components.Create<PlayerController>();
 			Components.Create<PlayerAnimator>();
 
@@ -114,7 +147,7 @@ namespace UEDFC
 			SimulateRotation();
 
 			Camera.Rotation = ViewAngles.ToRotation();
-			Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
+			Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Sandbox.Game.Preferences.FieldOfView );
 
 			Vector3 targetPos;
 			var pos = Position + Vector3.Up * 64;
@@ -160,5 +193,13 @@ namespace UEDFC
 			EyeRotation = ViewAngles.ToRotation();
 			Rotation = ViewAngles.WithPitch( 0f ).ToRotation();
 		}
+	}
+
+	public enum PlayerClasses
+	{
+		Assault,
+		Ranger,
+		Fencer,
+		WingDiver
 	}
 }

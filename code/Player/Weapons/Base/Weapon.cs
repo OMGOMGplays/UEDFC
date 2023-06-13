@@ -5,7 +5,6 @@ namespace UEDFC
 {
 	public partial class Weapon : AnimatedEntity
 	{
-
 		public Player Pawn => Owner as Player;
 
 		public AnimatedEntity EffectEntity => Pawn;
@@ -101,7 +100,7 @@ namespace UEDFC
 			{
 				tr.Surface.DoBulletImpact( tr );
 
-				if ( !Game.IsServer ) continue;
+				if ( !Sandbox.Game.IsServer ) continue;
 				if ( !tr.Entity.IsValid() ) continue;
 
 				using (Prediction.Off())
@@ -118,7 +117,7 @@ namespace UEDFC
 
 		public virtual void ShootBullet(float spread, float force, float damage, float bulletSize)
 		{
-			Game.SetRandomSeed( Time.Tick );
+			Sandbox.Game.SetRandomSeed( Time.Tick );
 
 			var ray = Owner.AimRay;
 			ShootBullet(ray.Position, ray.Forward, spread, force, damage, bulletSize );

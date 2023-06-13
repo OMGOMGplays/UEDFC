@@ -2,14 +2,14 @@
 
 namespace UEDFC
 {
-	public partial class TestWeapon : Weapon
+	public partial class TestWeapon : AssaultWeapon
 	{
 		public override string ModelPath => "models/weapons/testweapon.vmdl";
 
 		[ClientRpc]
 		protected virtual void ShootEffects()
 		{
-			Game.AssertClient();
+			Sandbox.Game.AssertClient();
 
 			Particles.Create( "null", EffectEntity, "muzzle" );
 

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace UEDFC 
 {
-	public class UEDFCGame : GameManager 
+	public class Game : GameManager 
 	{
 		public override void ClientJoined( IClient cl )
 		{
