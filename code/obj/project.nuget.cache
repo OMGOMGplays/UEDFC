@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "stN1DSHjkcC2aPQmuN/FlCmHhBy3+X67RohygqEDdXG4GIFHRDjYCKScIm1louLk8YuyTrqrE0hcwP3yFO7RMw==",
+  "success": true,
+  "projectFilePath": "E:\\Steam Spel\\steamapps\\common\\sbox\\addons\\UEDFC\\code\\UEDFC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Loke\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.2\\microsoft.windowsdesktop.app.ref.7.0.2.nupkg.sha512",
+    "C:\\Users\\Loke\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.2\\microsoft.netcore.app.ref.7.0.2.nupkg.sha512",
+    "C:\\Users\\Loke\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.2\\microsoft.aspnetcore.app.ref.7.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
